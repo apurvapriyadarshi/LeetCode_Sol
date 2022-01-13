@@ -1,8 +1,6 @@
 class Solution {
     public List<List<Integer>> generate(int numRows) {
         
-        int tot_ele= (numRows*(numRows+1))/2;
-        
         List<List<Integer>> res =new ArrayList<List<Integer>>();
         
         
