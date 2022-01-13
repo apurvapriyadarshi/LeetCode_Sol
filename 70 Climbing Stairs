@@ -1,0 +1,21 @@
+class Solution {
+    public int climbStairs(int n) {
+        
+        
+        
+        int prev=2 ,prev2=1; //base case n=1 ,n=2
+        if(n==1)
+            return prev2;
+        if(n==2)
+            return prev;
+        int ans=0;
+        for(int i=3;i<=n;i++)
+        {
+             ans= prev+prev2;
+            prev2=prev;
+            prev=ans;
+        }
+        return ans;
+        
+    }
+}
