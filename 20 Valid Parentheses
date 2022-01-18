@@ -1,0 +1,53 @@
+class Solution {
+    public boolean isValid(String s) {
+        
+        Stack<Character> bracket = new Stack<>();
+        
+        for(char ch : s.toCharArray())
+        {
+                
+                if(ch=='{')
+                    bracket.push('}');
+                else if(ch=='(' )
+                    bracket.push(')');
+                else if(ch=='[' )
+                    bracket.push(']');
+                else if(bracket.isEmpty() || bracket.pop() !=ch)
+                    return false;
+            }
+        
+        return bracket.isEmpty();
+    }
+}
+
+// Another Solution
+
+class Solution {
+    public boolean isValid(String s) {
+        
+        Stack<Character> bracket = new Stack<>();
+        
+        for(char ch : s.toCharArray())
+        {
+            if(ch == '{' || ch == '(' || ch =='[')
+                bracket.push(ch);
+            else
+            {
+                if(bracket.isEmpty())
+                    return false;
+                else if(ch=='}' && bracket.peek() == '{')
+                    bracket.pop();
+                else if(ch==')' && bracket.peek() == '(')
+                    bracket.pop();
+                else if(ch==']' && bracket.peek() == '[')
+                    bracket.pop();
+                else
+                    return false;
+            }
+        }
+        if(bracket.isEmpty())
+            return true;
+    
+        return false;
+    }
+}
