@@ -1,0 +1,18 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int currArrPos=0;
+        int resArrPos=0;
+        int len=nums.length;
+        
+        while(currArrPos < len)
+        {
+            int val=nums[currArrPos];
+            while(currArrPos < len && nums[currArrPos]== val)
+            {
+               currArrPos++; 
+            }
+            nums[resArrPos++]=val;
+        }
+        return resArrPos;
+    }
+}
