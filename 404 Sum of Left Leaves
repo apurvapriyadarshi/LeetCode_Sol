@@ -35,3 +35,44 @@ class Solution {
             traverse(root.right,"right");
     }
 }
+
+----------------Without Class Variable----
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    
+    public int sumOfLeftLeaves(TreeNode root) {
+        return traverse(root,"root");
+      
+    }
+    public int traverse(TreeNode root ,String path)
+    {
+        if(root ==null)
+            return 0;
+        if(root.left == null && root.right ==null)
+        {
+            if(path=="left")
+                return root.val;
+            return 0;
+        }
+        
+       
+           return traverse(root.left,"left")+traverse(root.right,"right");
+        
+            
+    }
+}
