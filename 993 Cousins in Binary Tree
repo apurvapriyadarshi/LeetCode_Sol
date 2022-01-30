@@ -1,0 +1,33 @@
+
+class Solution {
+    public boolean isCousins(TreeNode root, int x, int y) {
+        
+        Queue<TreeNode> lvlnodesQueue = new LinkedList<>();
+        lvlnodesQueue.offer(root);
+        while(! lvlnodesQueue.isEmpty())
+        {
+            Map<Integer,Integer> childparent =new HashMap<>();
+            int size = lvlnodesQueue.size();
+            for(int i=0;i<size;i++)
+            {
+                TreeNode temp = lvlnodesQueue.peek();
+                if(temp.left != null)
+                {
+                    lvlnodesQueue.offer(temp.left);
+                    childparent.put(temp.left.val,temp.val);
+                }
+                if(temp.right != null)
+                {
+                    lvlnodesQueue.offer(temp.right);
+                    childparent.put(temp.right.val,temp.val);
+                }
+                
+                lvlnodesQueue.poll();
+            }
+            if(childparent.containsKey(x) && childparent.containsKey(y) && childparent.get(x) != childparent.get(y))
+                return true;
+            
+        }
+        return false;
+    }
+}
